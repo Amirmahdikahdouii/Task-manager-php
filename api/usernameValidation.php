@@ -8,7 +8,7 @@ header('Access-Control-Allow-Methods: POST, OPTIONS');
 
 // Database configuration
 $host = 'localhost'; // Database host
-$dbname = 'habit_tracker'; // Database name
+$dbname = 'task_manager'; // Database name
 $user = 'root'; // Database username
 $pass = 'Alimardani33'; // Database password
 
