@@ -1,0 +1,141 @@
+:root {
+    --dark-color: #151515;
+    --secondary-color: #A91D3A;
+    --info-color: #C73659;
+    --white-color: #EEEEEE;
+
+    /* --dark-color: #1A4D2E;
+    --secondary-color: #4F6F52;
+    --info-color: #E8DFCA;
+    --white-color: #F5EFE6; */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.site-header {
+    background-color: var(--dark-color);
+    padding: 15px 20px;
+    color: var(--white-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+/* Brand Name */
+.header-brand-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--info-color);
+    text-decoration: none;
+}
+
+.header-brand-name:hover {
+    color: var(--secondary-color);
+}
+
+/* Navigation Menu */
+.header-main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--info-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    color: var(--white-color);
+}
+
+.login-btn {
+    background-color: var(--info-color);
+}
+
+.signup-btn {
+    background-color: var(--secondary-color);
+}
+
+.login-btn:hover {
+    background-color: var(--white-color);
+    color: var(--secondary-color);
+}
+
+.signup-btn:hover {
+    background-color: var(--white-color);
+    color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .auth-buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .auth-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
