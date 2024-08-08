@@ -1,12 +1,10 @@
 <?php
-include '../core/db.php';
-$servername = "localhost"; // usually 'localhost'
-$username = "root"; // your MySQL username
-$password = "Alimardani33"; // your MySQL password
-$dbname = "task_manager"; // database name
+require_once "../core/db_config.php";
+include 'task-manager/core/db.php';
 
+session_start();
 // Create connection to MySQL
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 // Check connection
 if ($conn->connect_error) {
@@ -35,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($count);
         $stmt->fetch();
         if ($count > 0) {
-            $error = "Username already exists";
+            $error = "Username or E-mail already exists";
             $stmt->close();
         } else {
             $stmt->close();
@@ -43,7 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sss", $username, $email, $hashed_password);
             // Execute the statement
             if ($stmt->execute()) {
-                $success = "New record created successfully";
+                $_SESSION['success_message'] = "User created successfully.";
+                // Redirect to the login page
+                header("Location: login.php");
+                exit();
             } else {
                 $error = $stmt->error;
             }
@@ -59,6 +60,7 @@ $conn->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../assets/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link href="../assets/css/style.css" rel="stylesheet"/>
@@ -110,8 +112,6 @@ include '../components/header.php';
     <?php
     if ($error) {
         echo "alert($error);";
-    } else if ($success) {
-        header("Location: ./login.php");
     }
     ?>
 </script>

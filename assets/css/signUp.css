@@ -93,3 +93,7 @@ body {
     display: block;
     color: var(--info-color);
 }
+
+#login-form-button {
+    opacity: 100%;
+}

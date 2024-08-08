@@ -1,12 +1,8 @@
 <?php
-// Database configuration
-$servername = "localhost"; // usually 'localhost'
-$username = "root"; // your MySQL username
-$password = "Alimardani33"; // your MySQL password
-$dbname = "task_manager"; // database name
+require_once "task-manager/core/db_config.php";
 
 // Create connection to MySQL
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD);
 
 // Check connection
 if ($conn->connect_error) {
@@ -14,6 +10,7 @@ if ($conn->connect_error) {
 }
 
 // Create database if it doesn't exist
+$dbname = DB_NAME;
 $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 if ($conn->query($sql) !== TRUE) {
     die("Error creating database: " . $conn->error);
