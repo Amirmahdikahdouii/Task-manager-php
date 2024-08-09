@@ -1,19 +1,14 @@
 <?php
+include "../core/db_config.php";
+
 header('Content-Type: application/json');
 
 header('Access-Control-Allow-Origin: *');
 // Allow specific headers and methods
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
-
-// Database configuration
-$host = 'localhost'; // Database host
-$dbname = 'task_manager'; // Database name
-$user = 'root'; // Database username
-$pass = 'Alimardani33'; // Database password
-
 // Create a MySQLi connection
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 // Check the connection
 if ($conn->connect_error) {

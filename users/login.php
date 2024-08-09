@@ -1,20 +1,13 @@
 <?php
 require_once "../core/db_config.php";
 require_once "../core/config.php";
-include 'task-manager/core/db.php';
+include '../core/db.php';
 
 if (USER_LOGIN) {
     header("Location: dashboard.php");
 }
 
 session_start();
-// Check if there's a success message in the session
-if (isset($_SESSION['success_message'])) {
-    $success_message = $_SESSION['success_message'];
-    unset($_SESSION['success_message']);
-} else {
-    $success_message = "";
-}
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
@@ -23,8 +16,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $error = "";
-    $success = "";
     $table = "users";
 
 
@@ -47,11 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION["user_login"] = true;
             $_SESSION["user_id"] = $id;
+            $_SESSION['message'] = "Login successful!";
+            $_SESSION['message_icon'] = "success";
             header("Location: dashboard.php");
             exit();
         } else {
-            // Password is not valid
-            $error = "Invalid username or password.";
+            $_SESSION['message'] = "Invalid username or password";
+            $_SESSION['message_icon'] = "error";
         }
     }
 }
@@ -67,6 +60,10 @@ $conn->close();
     <title>Login</title>
     <link href="../assets/css/style.css" rel="stylesheet"/>
     <link href="../assets/css/signUp.css" rel="stylesheet"/>
+    <link href="../assets/css/footer.css" rel="stylesheet"/>
+    <?php
+    include "../components/messagesAssets.php";
+    ?>
 </head>
 <body>
 <?php
@@ -98,16 +95,8 @@ include '../components/header.php';
     </div>
     <!-- End form Section -->
 </main>
-
-<script>
-    <?php
-    if (!empty($success_message)) {
-        echo "alert('" . $success_message . "');";
-    }
-    if ($error) {
-        echo "alert('" . $error . "');";
-    }
-    ?>
-</script>
+<?php
+include "../components/footer.php";
+?>
 </body>
 </html>

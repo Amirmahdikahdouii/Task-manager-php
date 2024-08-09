@@ -2,14 +2,9 @@
 include "../core/db_config.php";
 include "../core/db.php";
 include "../core/config.php";
+include "../permissions/login_required.php";
 
 session_start();
-if (!USER_LOGIN) {
-    $_SESSION['message'] = "PLEASE LOGIN TO ADD TASK";
-    $_SESSION['message_icon'] = "warning";
-    header("Location: ../users/login.php");
-}
-
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

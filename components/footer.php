@@ -3,3 +3,7 @@
         <p>&copy; 2024 Task Manager. All rights reserved.</p>
     </div>
 </footer>
+
+<?php
+include "messages.php";
+?>

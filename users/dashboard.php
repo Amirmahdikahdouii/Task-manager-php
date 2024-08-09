@@ -1,3 +1,7 @@
+<?php
+include "../permissions/login_required.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,9 @@
     <link href="../assets/css/style.css" rel="stylesheet"/>
     <link href="../assets/css/dashboard.css" rel="stylesheet">
     <link href="../assets/css/footer.css" rel="stylesheet"/>
+    <?php
+    include "../components/messagesAssets.php";
+    ?>
 </head>
 <body>
 <?php

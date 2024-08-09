@@ -16,8 +16,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $error = "";
-    $success = "";
     $table = "users";
 
 
@@ -28,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST['confirm_password'];
 
     if ($password !== $confirm_password) {
-        $error = "Passwords are not match";
+        $_SESSION['message'] = "Passwords are not match";
+        $_SESSION['message_icon'] = "error";
     } else {
         // Prepare and bind
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
@@ -38,7 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($count);
         $stmt->fetch();
         if ($count > 0) {
-            $error = "Username or E-mail already exists";
+            $_SESSION['message'] = "Username or email is already taken";
+            $_SESSION['message_icon'] = "error";
             $stmt->close();
         } else {
             $stmt->close();
@@ -46,12 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sss", $username, $email, $hashed_password);
             // Execute the statement
             if ($stmt->execute()) {
-                $_SESSION['success_message'] = "User created successfully.";
+                $_SESSION['message'] = "User created successfully.";
+                $_SESSION['message_icon'] = "success";
                 // Redirect to the login page
                 header("Location: login.php");
                 exit();
             } else {
-                $error = $stmt->error;
+                $_SESSION['message'] = "Error While creating user";
+                $_SESSION['message_icon'] = "error";
             }
             $stmt->close();
 
@@ -70,6 +72,10 @@ $conn->close();
     <title>Sign Up</title>
     <link href="../assets/css/style.css" rel="stylesheet"/>
     <link href="../assets/css/signUp.css" rel="stylesheet"/>
+    <link href="../assets/css/footer.css" rel="stylesheet"/>
+    <?php
+    include "../components/messagesAssets.php";
+    ?>
 </head>
 <body>
 <?php
@@ -113,12 +119,8 @@ include '../components/header.php';
 </main>
 
 <script src="../assets/js/signUp.js"></script>
-<script>
-    <?php
-    if ($error) {
-        echo "alert($error);";
-    }
-    ?>
-</script>
+<?php
+include "../components/footer.php";
+?>
 </body>
 </html>

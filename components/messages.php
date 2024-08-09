@@ -2,9 +2,6 @@
 session_start();
 if (isset($_SESSION['message']) and $_SESSION['message']) {
     ?>
-    <link rel="stylesheet" href="../assets/css/messages.css">
-    <script src="../assets/js/messages.js"></script>
-
     <!-- Custom Alert Popup -->
     <div id="customAlert" class="custom-alert">
         <div class="custom-alert-content">
