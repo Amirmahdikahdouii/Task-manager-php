@@ -1,13 +1,13 @@
 <?php
 require_once "../core/db_config.php";
+require_once "../core/config.php";
 include 'task-manager/core/db.php';
 
-session_start();
-if (isset($_SESSION['user_login']) and $_SESSION['user_login']) {
-    $_SESSION['message'] = "You have already Logged in";
-    header("Location: /task-manager/index.php");
+if (USER_LOGIN) {
+    header("Location: dashboard.php");
 }
 
+session_start();
 // Check if there's a success message in the session
 if (isset($_SESSION['success_message'])) {
     $success_message = $_SESSION['success_message'];

@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (isset($_SESSION['user_login']) and $_SESSION['user_login']) {
-    $user_login = true;
-} else {
-    $user_login = false;
-}
+include '../core/config.php';
 ?>
 <!-- Header Section -->
 <header class="site-header">
@@ -21,7 +16,7 @@ if (isset($_SESSION['user_login']) and $_SESSION['user_login']) {
         </nav>
         <div class="auth-buttons">
             <?php
-            if ($user_login) {
+            if (USER_LOGIN) {
                 ?>
                 <a href="/task-manager/users/dashboard.php" class="btn login-btn">Dashboard</a>
                 <?php

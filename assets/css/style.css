@@ -1,13 +1,8 @@
 :root {
-    --dark-color: #151515;
-    --secondary-color: #A91D3A;
-    --info-color: #C73659;
-    --white-color: #EEEEEE;
-
-    /* --dark-color: #1A4D2E;
-    --secondary-color: #4F6F52;
-    --info-color: #E8DFCA;
-    --white-color: #F5EFE6; */
+    --dark-color: #45474B;
+    --secondary-color: #495E57;
+    --info-color: #F4CE14;
+    --white-color: #F5F7F8;
 }
 
 * {

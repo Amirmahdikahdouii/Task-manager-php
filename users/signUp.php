@@ -1,6 +1,11 @@
 <?php
 require_once "../core/db_config.php";
 include 'task-manager/core/db.php';
+require_once "../core/config.php";
+
+if (USER_LOGIN) {
+    header("Location: dashboard.php");
+}
 
 session_start();
 // Create connection to MySQL
