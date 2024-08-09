@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['user_login']) and $_SESSION['user_login']) {
+    $user_login = true;
+} else {
+    $user_login = false;
+}
+?>
 <!-- Header Section -->
 <header class="site-header">
     <div class="header-container">
@@ -12,11 +20,21 @@
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="#" class="btn login-btn">Login</a>
-            <a href="/task-manager/users/signUp.php"
-               class="btn signup-btn">
-                Sign Up
-            </a>
+            <?php
+            if ($user_login) {
+                ?>
+                <a href="/task-manager/users/dashboard.php" class="btn login-btn">Dashboard</a>
+                <?php
+            } else {
+                ?>
+                <a href="/task-manager/users/login.php" class="btn login-btn">Login</a>
+                <a href="/task-manager/users/signUp.php"
+                   class="btn signup-btn">
+                    Sign Up
+                </a>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </header>

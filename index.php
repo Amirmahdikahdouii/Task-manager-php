@@ -1,3 +1,6 @@
+<?php
+require_once "core/config.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,9 +31,21 @@ include "components/header.php";
             <h5 class="main-section-text">
                 By using Task Manager You can achieve your dreams easily!
             </h5>
-            <a href="./users/signUp.php" class="main-section-link">
-                Register Now!
-            </a>
+            <?php
+            if (USER_LOGIN) {
+                ?>
+                <a href="./users/signUp.php" class="main-section-link">
+                    Add New Task!
+                </a>
+                <?php
+            } else {
+                ?>
+                <a href="./users/signUp.php" class="main-section-link">
+                    Register Now!
+                </a>
+                <?php
+            }
+            ?>
         </div>
         <div class="main-section-item">
             <img src="./assets/img/main-section-image.jpg" alt="Main Image" class="main-section-image">
