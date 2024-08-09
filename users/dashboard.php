@@ -20,7 +20,7 @@ include "../components/header.php";
             <div class="main-section-item-image-container">
                 <img src="../assets/img/dashboard-add-task.jpeg" alt="Add Task" class="main-section-item-image">
             </div>
-            <a href="" class="main-section-item-title">Add New Task</a>
+            <a href="../tasks/addNewTask.php" class="main-section-item-title">Add New Task</a>
             <p class="main-section-item-text">
                 Here, you can add new task for yourself and start have control on your plans.
             </p>

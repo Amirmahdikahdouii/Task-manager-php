@@ -1,0 +1,108 @@
+.main-section {
+    max-width: 1240px;
+    width: 70%;
+    margin: 70px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    padding: 1% 0 0;
+}
+
+.main-title {
+    font-size: 2rem;
+    color: var(--white-color);
+}
+
+.main-section-items-container {
+    margin: 1% 0 0;
+    padding: 2% 1%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--info-color);
+    border-radius: 0 0 10px 10px;
+}
+
+.main-section-image-container, .main-section-item {
+    flex: 1;
+    width: 50%;
+    max-width: 50%;
+}
+
+.main-section-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-section-image-container {
+    width: 35%;
+    max-width: 35%;
+}
+
+.main-image {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--secondary-color);;
+}
+
+.form-group input, #message {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#message {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 70px;
+}
+
+.form-group input:focus, #message:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+.form-button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--white-color);
+    color: var(--dark-color);
+}

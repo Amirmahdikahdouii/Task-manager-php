@@ -1,5 +1,5 @@
 <?php
-require_once "task-manager/core/db_config.php";
+require_once "db_config.php";
 
 // Create connection to MySQL
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD);
@@ -28,6 +28,23 @@ $sql = "CREATE TABLE IF NOT EXISTS $table (
     password VARCHAR(255) NOT NULL,
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
+
+if ($conn->query($sql) !== TRUE) {
+    die("Error creating table: " . $conn->error);
+}
+
+
+$table = "tasks";
+$sql = "CREATE TABLE IF NOT EXISTS $table (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6) UNSIGNED NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    completed BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);";
 
 if ($conn->query($sql) !== TRUE) {
     die("Error creating table: " . $conn->error);
