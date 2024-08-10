@@ -13,6 +13,9 @@ require_once "core/config.php";
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/index.css" rel="stylesheet">
     <link href="assets/css/footer.css" rel="stylesheet">
+    <?php
+    include "components/messagesAssets.php";
+    ?>
 </head>
 <body>
 <?php
@@ -34,7 +37,7 @@ include "components/header.php";
             <?php
             if (USER_LOGIN) {
                 ?>
-                <a href="./users/signUp.php" class="main-section-link">
+                <a href="./tasks/addNewTask.php" class="main-section-link">
                     Add New Task!
                 </a>
                 <?php

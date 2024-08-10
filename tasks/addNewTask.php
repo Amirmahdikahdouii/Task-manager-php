@@ -11,9 +11,9 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_id = $_SESSION["user_id"];
+    $user_id = USER_ID;
     $title = $conn->real_escape_string($_POST["title"]);
-    $message = $conn->real_escape_string($_POST["message"]);
+    $message = $_POST["message"];
     $statement = $conn->prepare(
         "INSERT INTO tasks (user_id, title, description, completed) VALUES (?, ?, ?, false)"
     );
@@ -44,7 +44,7 @@ $conn->close();
     <link href="../assets/css/addNewTask.css" rel="stylesheet">
     <link href="../assets/css/footer.css" rel="stylesheet"/>
     <?php
-    include "../components/messages.php";
+    include "../components/messagesAssets.php";
     ?>
 </head>
 <body>

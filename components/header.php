@@ -11,7 +11,7 @@ include '../core/config.php';
             <ul>
                 <li><a href="/task-manager/index.php" class="nav-link">Home</a></li>
                 <li><a href="/task-manager/users/dashboard.php" class="nav-link">Dashboard</a></li>
-                <li><a href="#" class="nav-link">Tasks</a></li>
+                <li><a href="/task-manager/tasks/taskList.php" class="nav-link">Tasks</a></li>
                 <li><a href="#" class="nav-link">Contact</a></li>
             </ul>
         </nav>

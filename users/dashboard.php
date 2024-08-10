@@ -36,7 +36,7 @@ include "../components/header.php";
             <div class="main-section-item-image-container">
                 <img src="../assets/img/dashboard-list-task.jpeg" alt="List Task" class="main-section-item-image">
             </div>
-            <a href="" class="main-section-item-title">List Task</a>
+            <a href="../tasks/taskList.php" class="main-section-item-title">List Task</a>
             <p class="main-section-item-text">
                 Here, You can see you task list and manage them.
             </p>
