@@ -1,3 +1,7 @@
+button {
+    margin: 0 !important;
+}
+
 .accordion-container {
     width: 100%;
     max-width: 1240px;
@@ -60,11 +64,16 @@
 .toggle-button {
     padding: 8px;
     border: none;
+    margin: 0 10px !important;
     background-color: transparent;
     font-size: 20px;
     color: var(--info-color);
     cursor: pointer;
     transition: transform 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: transparent;
 }
 
 .accordion-body {
@@ -102,3 +111,106 @@
     background-color: var(--white-color);
     color: var(--secondary-color);
 }
+
+.search-container {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+.search-button {
+    margin: 0;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #45a049;
+}
+
+.filter-section {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-button {
+    padding: 12px 20px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #007B9A;
+}
+
+
+.filter-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    z-index: 1000; /* Ensure it appears above other content */
+    min-width: 200px; /* Ensure the menu has a minimum width */
+}
+
+
+.filter-menu.open {
+    max-height: 300px;
+    transition: max-height 0.5s ease-in;
+}
+
+.menu-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.sub-menu {
+    padding-left: 20px;
+}
+
+.sub-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.sub-menu-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
