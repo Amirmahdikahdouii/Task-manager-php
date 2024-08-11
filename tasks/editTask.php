@@ -114,13 +114,17 @@ include '../components/header.php';
             </div>
         </div>
     </section>
+
+    <?php
+    include "../components/messages.php";
+    ?>
 </main>
 
 <?php
 $statement->close();
 $conn->close();
 include '../components/footer.php';
-require_once "../components/messages.php";
+require_once "../components/messageScript.php";
 ?>
 </body>
 </html>

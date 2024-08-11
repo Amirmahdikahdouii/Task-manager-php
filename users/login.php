@@ -93,10 +93,13 @@ include '../components/header.php';
         </form>
     </div>
     <!-- End form Section -->
+    <?php
+    include "../components/messages.php";
+    ?>
 </main>
 <?php
 include "../components/footer.php";
-include "../components/messages.php";
+include "../components/messageScript.php";
 ?>
 </body>
 </html>

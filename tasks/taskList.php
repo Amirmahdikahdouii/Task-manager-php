@@ -137,11 +137,15 @@ include '../components/header.php';
         }
         ?>
     </section>
+
+    <?php
+    include "../components/messages.php";
+    ?>
 </main>
 
 <?php
 include '../components/footer.php';
-require_once "../components/messages.php";
+include "../components/messageScript.php";
 
 $statement->close();
 $conn->close();

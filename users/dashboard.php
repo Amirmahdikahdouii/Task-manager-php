@@ -51,10 +51,15 @@ include "../components/header.php";
             </p>
         </div>
     </section>
+
+    <?php
+    include "../components/messages.php";
+    ?>
 </main>
 
 <?php
 include "../components/footer.php";
+include "../components/messageScript.php";
 ?>
 </body>
 </html>

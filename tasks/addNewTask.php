@@ -79,11 +79,15 @@ include '../components/header.php';
             </div>
         </div>
     </section>
+
+    <?php
+    include '../components/messages.php';
+    ?>
 </main>
 
 <?php
 include '../components/footer.php';
-require_once "../components/messages.php";
+require_once "../components/messageScript.php";
 ?>
 </body>
 </html>

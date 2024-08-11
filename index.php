@@ -55,10 +55,16 @@ include "components/header.php";
         </div>
     </section>
     <!-- End Main Section -->
+
+    <!-- Message Section -->
+        <?php
+        include "components/messages.php"
+        ?>
 </main>
 
 <?php
 include "components/footer.php";
+include "components/messageScript.php";
 ?>
 </body>
 </html>
