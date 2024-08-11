@@ -9,10 +9,15 @@ $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+// Validate data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (strlen($_POST['title']) > 100) {
         $_SESSION['message'] = "Title max length is 100 character ";
+        $_SESSION['message_icon'] = "error";
+        header("Location: addNewTask.php");
+        exit();
+    } elseif ($_POST["priority"] !== "low" && $_POST["priority"] !== "high" && $_POST["priority"] !== "medium") {
+        $_SESSION['message'] = "Priority must be low, medium or high";
         $_SESSION['message_icon'] = "error";
         header("Location: addNewTask.php");
         exit();
@@ -20,11 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = USER_ID;
     $title = $conn->real_escape_string($_POST["title"]);
     $message = $_POST["message"];
+    $priority = $_POST["priority"];
+
     // Prepare SQL for creating new task
     $statement = $conn->prepare(
-        "INSERT INTO tasks (user_id, title, description, completed) VALUES (?, ?, ?, false)"
+        "INSERT INTO tasks (user_id, title, description, priority, completed) VALUES (?, ?, ?, ?, false)"
     );
-    $statement->bind_param("sss", $user_id, $title, $message);
+    $statement->bind_param("ssss", $user_id, $title, $message, $priority);
     if ($statement->execute()) {
         $_SESSION['message'] = "Task added successfully!";
         $_SESSION['message_icon'] = "success";
@@ -73,6 +80,14 @@ include '../components/header.php';
                     <label for="message">Message:</label>
                     <textarea name="message" id="message" rows="10"></textarea>
                     <span class="input-message" id="message-input-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
                 </div>
                 <div class="form-button-container">
                     <button class="btn btn-primary">
