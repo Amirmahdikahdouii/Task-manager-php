@@ -3,7 +3,7 @@
     margin: 15px 0;
 }
 
-button {
+.close-message-button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: var(--dark-color);
@@ -13,10 +13,6 @@ button {
     cursor: pointer;
     margin: 20px;
     transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #2563a9;
 }
 
 .custom-alert {

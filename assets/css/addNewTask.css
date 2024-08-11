@@ -92,6 +92,7 @@
 .btn {
     border: none;
     padding: 12px 25px;
+    margin: 20px;
     font-size: 1rem;
     transition: background-color 0.3s;
     cursor: pointer;
@@ -117,12 +118,57 @@
     justify-content: start;
 }
 
-.form-group-checkbox > label,  .form-group-checkbox > input{
+.form-group-checkbox > label, .form-group-checkbox > input {
     display: inline-block;
     margin: 0;
 }
 
-.form-group-checkbox > input{
+.form-group-checkbox > input {
     width: auto;
     margin: 0 10px;
+}
+
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.btn-success {
+    background-color: #4CAF50;
+}
+
+#confirm-delete-button {
+    margin: 0 12px;
+}
+
+#message {
+    border: none;
+    margin: 15px 0;
 }

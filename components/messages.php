@@ -40,7 +40,7 @@ if (isset($_SESSION['message'])) {
                 }
                 ?>
                 <span id="alertMessage"></span>
-                <button onclick="closeCustomAlert()">Close</button>
+                <button onclick="closeCustomAlert()" class="close-message-button">Close</button>
             </div>
         </div>
     </section>

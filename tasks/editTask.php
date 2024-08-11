@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         if (strlen($_POST["title"]) > 100) {
-            $_SESSION["message"] = "Task title is too long!";
+            $_SESSION["message"] = "Task title should be maximum 100 character";
             $_SESSION["message_icon"] = "error";
         }
     }
@@ -104,6 +104,9 @@ include '../components/header.php';
                     <span class="input-message" id="message-input-message"></span>
                 </div>
                 <div class="form-button-container">
+                    <button class="btn btn-error" type="button" id="deleteTaskButton">
+                        Delete Task
+                    </button>
                     <button class="btn btn-primary" type="submit">
                         Edit Task
                     </button>
@@ -118,8 +121,20 @@ include '../components/header.php';
     <?php
     include "../components/messages.php";
     ?>
+    <section>
+        <!-- Delete Task confirmation section -->
+        <div id="messageBox" class="message-box">
+            <h4 class="mb-4">Confirmation</h4>
+            <p id="message">Do you want to proceed with this action?</p>
+            <div class="button-container">
+                <button id="confirm-delete-button" class="btn btn-success">Yes</button>
+                <button id="cancel-delete-button" class="btn btn-error">No</button>
+            </div>
+        </div>
+    </section>
 </main>
 
+<script src="../assets/js/editTask.js"></script>
 <?php
 $statement->close();
 $conn->close();
