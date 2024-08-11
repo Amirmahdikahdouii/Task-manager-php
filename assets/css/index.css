@@ -1,6 +1,6 @@
 .main-section {
     margin: 60px auto;
-    width: 100%;
+    width: 95%;
     max-width: 1240px;
     display: flex;
     align-items: center;
@@ -87,4 +87,36 @@
 .main-section-link:hover::after {
     height: 100%;
     color: var(--dark-color);
+}
+
+@media (max-width: 1024px) {
+    h1.main-section-text {
+        font-size: 1.7rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .main-section {
+        flex-direction: column;
+    }
+
+    .main-section-item {
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .main-section-text-container {
+        order: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-section-text {
+        font-size: .7rem !important;
+    }
+
+    h1.main-section-text {
+        font-size: 1.5rem !important;
+    }
 }

@@ -172,3 +172,27 @@
     border: none;
     margin: 15px 0;
 }
+
+@media (max-width: 1024px) {
+    .main-section {
+        width: 90%;
+    }
+
+    .main-section-image-container {
+        display: none;
+    }
+    .main-section-item {
+        width: 95%;
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .main-section-items-container {
+        flex-direction: column;
+    }
+
+
+
+}

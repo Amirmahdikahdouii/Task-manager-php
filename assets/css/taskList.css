@@ -231,3 +231,9 @@ button {
 .priority-high {
     background-color: #921A40;
 }
+
+@media (max-width: 768px) {
+    .accordion-container {
+        width: 95%;
+    }
+}

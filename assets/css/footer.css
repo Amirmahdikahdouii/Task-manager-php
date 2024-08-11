@@ -5,11 +5,23 @@ footer {
     text-align: center;
     position: fixed;
     bottom: 0;
-    /*left: 0;*/
+    z-index: 2;
     width: 100%;
 }
 
 .footer-bottom {
     padding: 6px 0;
     font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+
 }

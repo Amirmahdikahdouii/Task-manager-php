@@ -113,26 +113,38 @@ body {
     color: var(--secondary-color);
 }
 
-/* Responsive Design */
+
+@media (max-width: 1024px) {
+    body{
+        padding-bottom: 100px;
+    }
+}
+
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        align-items: flex-start;
+    }
+
+    .header-main-nav {
+        margin: 10px 0;
+        padding: 5px 0;
+        width: 100%;
     }
 
     .header-main-nav ul {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-section{
         flex-direction: column;
-        width: 100%;
-        gap: 10px;
     }
-
-    .auth-buttons {
-        width: 100%;
-        justify-content: flex-end;
+    .main-section-item{
+        width: 80%;
+        max-width: 80%;
     }
-
-    .auth-buttons .btn {
-        width: 100%;
-        text-align: center;
+    .main-section-text-container{
+        order: 2;
     }
 }
