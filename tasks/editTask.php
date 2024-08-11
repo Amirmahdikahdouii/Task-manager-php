@@ -37,11 +37,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (strlen($_POST["title"]) <= 100) {
         $title = $conn->real_escape_string($_POST["title"]);
         $message = $_POST["message"];
-        $completed = 1 ? $_POST["completed"] == "on" : 0;
+        $completed = $_POST["completed"] == "on" ? 1 : 0;
+        $priority = trim($_POST["priority"]);
+        if ($priority !== 'low' && $priority !== 'high' && $priority !== 'medium') {
+            $_SESSION['message'] = "Priority should be low, medium or high";
+            $_SESSION['message'] = $priority;
+            $_SESSION['message_icon'] = "warning";
+            header("Location: taskList.php");
+            exit();
+        }
         $statement = $conn->prepare(
-            "UPDATE tasks SET title = ?, description = ?, completed = ? WHERE user_id=$user_id AND id=$task_id"
+            "UPDATE tasks SET title = ?, description = ?, completed = ?, priority = ? WHERE user_id=$user_id AND id=$task_id"
         );
-        $statement->bind_param("ssi", $title, $message, $completed);
+        $statement->bind_param("ssis", $title, $message, $completed, $priority);
         if ($statement->execute()) {
             $_SESSION['message'] = "Task Updated";
             $_SESSION['message_icon'] = "success";
@@ -96,6 +104,16 @@ include '../components/header.php';
                     <label for="message">Message:</label>
                     <textarea name="message" id="message" rows="10"><?php echo $task['description'] ?></textarea>
                     <span class="input-message" id="message-input-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="priority">
+                        <option value="low" <?php echo $task['priority'] === "low" ? "selected" : '' ?>>Low</option>
+                        <option value="medium" <?php echo $task['priority'] === "medium" ? "selected" : '' ?>>
+                            Medium
+                        </option>
+                        <option value="high" <?php echo $task['priority'] === "high" ? "selected" : '' ?>>High</option>
+                    </select>
                 </div>
                 <div class="form-group form-group-checkbox">
                     <label for="completed">Completed: </label>
