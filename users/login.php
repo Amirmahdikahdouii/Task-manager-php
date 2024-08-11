@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $table = "users";
 
 
-// Get the form data
+    // Get the form data
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
     $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $stmt->store_result();
 
-// Check if the username exists
+    // Check if the username exists
     if ($stmt->num_rows == 1) {
         // Bind the result variables
         $stmt->bind_result($id, $username, $hashed_password);

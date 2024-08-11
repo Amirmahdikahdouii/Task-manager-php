@@ -99,6 +99,7 @@ include '../components/header.php';
         </div>
         <?php
         if ($result->num_rows) {
+            // Fetch data from result and display to user
             while ($row = $result->fetch_assoc()):
                 ?>
                 <div class="accordion">
@@ -133,6 +134,7 @@ include '../components/header.php';
             <?php
             endwhile;
         } else {
+            // Meaningful message for no result founded based on user request
             echo "<h2 class='main-title'>No tasks found</h2>";
         }
         ?>

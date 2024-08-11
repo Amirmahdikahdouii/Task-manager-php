@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../permissions/login_required.php";
+// Dashboard page for authenticated users
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,15 +40,6 @@ include "../components/header.php";
             <a href="../tasks/taskList.php" class="main-section-item-title">List Task</a>
             <p class="main-section-item-text">
                 Here, You can see you task list and manage them.
-            </p>
-        </div>
-        <div class="main-section-item">
-            <div class="main-section-item-image-container">
-                <img src="../assets/img/dashboard-edit-profile.jpg" alt="Edit profile" class="main-section-item-image">
-            </div>
-            <a href="" class="main-section-item-title">Edit profile</a>
-            <p class="main-section-item-text">
-                Manage your information and have a better profile for yourself.
             </p>
         </div>
     </section>

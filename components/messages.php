@@ -1,4 +1,5 @@
 <?php
+// Message framework HTML structure
 if (isset($_SESSION['message'])) {
     ?>
     <!-- Custom Alert Popup -->

@@ -33,6 +33,7 @@ if ($task->num_rows === 0) {
 $task = $task->fetch_assoc();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check Information is valid or no
     if (strlen($_POST["title"]) <= 100) {
         $title = $conn->real_escape_string($_POST["title"]);
         $message = $_POST["message"];

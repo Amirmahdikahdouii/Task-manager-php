@@ -11,13 +11,19 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (strlen($_POST['title']) > 100) {
+        $_SESSION['message'] = "Title max length is 100 character ";
+        $_SESSION['message_icon'] = "error";
+        header("Location: addNewTask.php");
+        exit();
+    }
     $user_id = USER_ID;
     $title = $conn->real_escape_string($_POST["title"]);
     $message = $_POST["message"];
+    // Prepare SQL for creating new task
     $statement = $conn->prepare(
         "INSERT INTO tasks (user_id, title, description, completed) VALUES (?, ?, ?, false)"
     );
-
     $statement->bind_param("sss", $user_id, $title, $message);
     if ($statement->execute()) {
         $_SESSION['message'] = "Task added successfully!";

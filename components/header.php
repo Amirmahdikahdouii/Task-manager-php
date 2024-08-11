@@ -1,5 +1,6 @@
 <?php
 include '../core/config.php';
+// This module is a header component for easy to use in other pages
 ?>
 <!-- Header Section -->
 <header class="site-header">
@@ -12,7 +13,6 @@ include '../core/config.php';
                 <li><a href="/task-manager/index.php" class="nav-link">Home</a></li>
                 <li><a href="/task-manager/users/dashboard.php" class="nav-link">Dashboard</a></li>
                 <li><a href="/task-manager/tasks/taskList.php" class="nav-link">Tasks</a></li>
-                <li><a href="#" class="nav-link">Contact</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">

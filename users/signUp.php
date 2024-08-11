@@ -29,19 +29,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['message'] = "Passwords are not match";
         $_SESSION['message_icon'] = "error";
     } else {
-        // Prepare and bind
+        // Prepare and bind SQL
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE username = ? or email=?");
         $stmt->bind_param("ss", $username, $email);
         $stmt->execute();
         $stmt->bind_result($count);
         $stmt->fetch();
+        // Check username or email is unique or not
         if ($count > 0) {
             $_SESSION['message'] = "Username or email is already taken";
             $_SESSION['message_icon'] = "error";
             $stmt->close();
         } else {
             $stmt->close();
+            // Try to add new user if information was valid
             $stmt = $conn->prepare("INSERT INTO $table (username, email, password) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $username, $email, $hashed_password);
             // Execute the statement

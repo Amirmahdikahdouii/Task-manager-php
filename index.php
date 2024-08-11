@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "core/config.php";
 ?>
 <!doctype html>
@@ -60,6 +61,7 @@ include "components/header.php";
         <?php
         include "components/messages.php"
         ?>
+    <!-- End Message Section -->
 </main>
 
 <?php
