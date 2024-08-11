@@ -1,0 +1,1 @@
+UPDATE tasks SET title = "new title", description = "new description", completed = true, priority = "low or medium or high" WHERE user_id='user ID' AND id="taskID";

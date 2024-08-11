@@ -1,0 +1,1 @@
+INSERT INTO $table (username, email, password) VALUES ("test", "test@email.com", "hashed password");

@@ -1,0 +1,1 @@
+INSERT INTO tasks (user_id, title, description, priority, completed) VALUES ("user_id->int", "title test", "description test", "low or medium or high", false);
