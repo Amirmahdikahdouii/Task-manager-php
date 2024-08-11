@@ -1,10 +1,10 @@
 <?php
+session_start();
 include "../core/db_config.php";
 include "../core/db.php";
 include "../core/config.php";
 include "../permissions/login_required.php";
 
-session_start();
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -60,7 +60,7 @@ include '../components/header.php';
             <form action="" method="post" id="new-task-form" class="main-section-item">
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" required>
+                    <input type="text" id="title" name="title" required maxlength="100">
                     <span class="input-message" id="title-input-message"></span>
                 </div>
                 <div class="form-group">
@@ -83,6 +83,7 @@ include '../components/header.php';
 
 <?php
 include '../components/footer.php';
+require_once "../components/messages.php";
 ?>
 </body>
 </html>

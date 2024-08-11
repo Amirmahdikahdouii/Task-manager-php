@@ -1,9 +1,8 @@
 <?php
+session_start();
 include '../permissions/login_required.php';
 include '../core/db_config.php';
 include '../core/db.php';
-
-session_start();
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -48,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $_SESSION['message'] = "GET method only is required";
     $_SESSION['message_icon'] = "warning";
     header("Location ../index.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -127,7 +127,7 @@ include '../components/header.php';
                         <?php
                         echo "<p class='description'>" . nl2br(htmlspecialchars($row['description'], ENT_QUOTES, 'UTF-8')) . "</p>";
                         ?>
-                        <button class="edit-button">Edit Task</button>
+                        <a href="./editTask.php?task_id=<?php echo $row['id'] ?>" class="edit-button">Edit Task</a>
                     </div>
                 </div>
             <?php
@@ -141,6 +141,8 @@ include '../components/header.php';
 
 <?php
 include '../components/footer.php';
+require_once "../components/messages.php";
+
 $statement->close();
 $conn->close();
 ?>

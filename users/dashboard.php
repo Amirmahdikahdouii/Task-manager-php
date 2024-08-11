@@ -1,6 +1,6 @@
 <?php
+session_start();
 include "../permissions/login_required.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

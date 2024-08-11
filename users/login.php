@@ -1,14 +1,13 @@
 <?php
+session_start();
 require_once "../core/db_config.php";
 require_once "../core/config.php";
 include '../core/db.php';
 
 if (USER_LOGIN) {
     header("Location: dashboard.php");
+    exit();
 }
-
-session_start();
-
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 // Check connection
@@ -97,6 +96,7 @@ include '../components/header.php';
 </main>
 <?php
 include "../components/footer.php";
+include "../components/messages.php";
 ?>
 </body>
 </html>

@@ -106,3 +106,23 @@
     background-color: var(--white-color);
     color: var(--dark-color);
 }
+
+.btn-error {
+    background-color: #dc3545;
+}
+
+.form-group-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.form-group-checkbox > label,  .form-group-checkbox > input{
+    display: inline-block;
+    margin: 0;
+}
+
+.form-group-checkbox > input{
+    width: auto;
+    margin: 0 10px;
+}
