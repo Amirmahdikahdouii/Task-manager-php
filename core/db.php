@@ -35,12 +35,13 @@ if ($conn->query($sql) !== TRUE) {
 
 
 $table = "tasks";
-$sql = "CREATE TABLE IF NOT EXISTS $table (
+$sql = "CREATE TABLE IF NOT EXISTS tasks (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT(6) UNSIGNED NOT NULL,
     title VARCHAR(100) NOT NULL,
     description TEXT,
     completed BOOLEAN NOT NULL DEFAULT FALSE,
+    priority ENUM('low', 'medium', 'high') NOT NULL DEFAULT 'medium',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
