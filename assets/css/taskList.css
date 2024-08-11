@@ -216,3 +216,18 @@ button {
     margin-right: 10px;
 }
 
+.btn-priority {
+    margin: 0 20px !important;
+}
+
+.priority-low {
+    background-color: #A2CA71;
+}
+
+.priority-medium {
+    background-color: #6482AD;
+}
+
+.priority-high {
+    background-color: #921A40;
+}

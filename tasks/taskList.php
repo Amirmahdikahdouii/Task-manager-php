@@ -20,6 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $params[] = "%" . $_GET['search'] . "%";
         $types .= 's';
     }
+    // Check for priority parameter
+    if (isset($_GET['priority'])) {
+        $priority = $_GET['priority'];
+        $where_conditions[] = "priority = ?";
+        $params[] = $priority;
+        $types .= 's';
+    }
 
     // Check for status parameter
     if (isset($_GET['status'])) {
@@ -28,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $params[] = $completed;
         $types .= 'i';
     }
+
+
     // Construct the base query
     $sql = "SELECT * FROM tasks WHERE user_id = ?";
 
@@ -93,6 +102,23 @@ include '../components/header.php';
                                 </label>
                             </div>
                         </div>
+                        <div class="menu-item">
+                            <div>2. Priority</div>
+                            <div class="sub-menu">
+                                <label class="sub-menu-item">
+                                    <input type="checkbox" name="priority" value="low" class="filter-checkbox">
+                                    Low
+                                </label>
+                                <label class="sub-menu-item">
+                                    <input type="checkbox" name="priority" value="medium" class="filter-checkbox">
+                                    Medium
+                                </label>
+                                <label class="sub-menu-item">
+                                    <input type="checkbox" name="priority" value="high" class="filter-checkbox">
+                                    High
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,6 +137,8 @@ include '../components/header.php';
                         </div>
                         <div class="actions">
                             <?php
+                            $priority = $row['priority'];
+                            echo "<button class='status-button btn-priority priority-$priority'>$priority</button>";
                             if ($row['completed'] == 1):
                                 ?>
                                 <button class="status-button completed">Completed</button>
